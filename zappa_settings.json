@@ -1,0 +1,8 @@
+{
+    "dev": {
+        "app_function": "run.webapp", 
+        "s3_bucket": "mcc123",
+        "parameter_depth" : 1
+    }
+}
+

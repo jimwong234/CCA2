@@ -1,0 +1,16 @@
+Create a dating website
+
+Basic idea:
+1. main page that shows basic info about the website
+2. login page
+3. registration page that requires users enter their info (portrait,city)
+4. self profile page that shows user's own info and uploads personal images and search other users based on city
+5. other profile page that shows other users info and a show interest button 
+6. only friends both show interest to each other can become friends
+7. friends can chat with each other
+
+Database:
+1. user table
+2. user's image table
+3. interest table
+4. friend table

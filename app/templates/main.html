@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">    
+    <head>
+        <meta charset = "UTF-8">
+        <title> Easy Rent </title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
+        <script type="text/javascript" src="{{url_for('static', filename='script/jquery-3.1.1.min.js')}}" defer></script> <!--New JQuery-->
+        <script type="text/javascript" src="{{url_for('static', filename='script/FrontEnd.js')}}" defer></script>
+    </head>
+
+    <body>
+       <header id="header">
+          <div id="SiteLogo">
+          <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="TSportsLogo" /> </a>
+          </div>
+         <nav id="Site_Nav">
+             <div id="Main_Nav" class="main_navs">
+                 <ul>
+                     <li> <a href="#AboutUs"> About Us </a> </li>
+                     <li> <a href="#FAQ"> FAQ </a> </li>
+                 </ul>
+             </div>
+             <!--Jim's responsive design start here-->
+             <div id="nav_icon"><a href="javascript:void(0);" onclick="showNavBtn()">☰</a></div>
+             <!--Jim's responsive design end here-->
+             <div id="Home_Buttons" class="home_btns">
+                 <ul>
+                     <li id="Register_Button"> <a href="./registration.html"> Register </a> </li>  <!--Change this to the correct link-->
+                     <li id="Login_Button"> <a href="./login.html"> Login </a> </li>  <!--Change this to the correct link-->
+                 </ul>
+             </div>
+         </nav>
+
+       </header>
+            <!--The website banner-->
+           <!--JS script sets a random picture everytime the page is loaded-->
+           <div class="Banner-Wrapper" id="Banner-1">
+               <div class="BannerContent-Wrapper">
+                   <div class="Banner-Text">
+                       <h2 class="Banner-Text-Header">  Find a rental room today.  </h2>
+                       <p class="Banner-Text-Content"> A free website for you to rent your rooms or find a rental. </p>
+                       <a href="./registration.html" class="SignUpLink"> Sign up! </a>  <!--Change this to the correct link, to the register page-->
+                   </div>
+               </div>
+           </div>
+          
+      <section id="AboutUs">
+          
+          <div id="AboutUs_Content">
+              
+              <h2 id="AboutUs_Header"> About Us </h2>
+              
+              <p id="AboutUs_Text"> <strong> EasyRent </strong> is University of Toronto's largest sports social network to meet others. TSports makes it easy for anyone to organize a team or find thousands of other individuals willing to show up and play sports. UofT is home to more than 30,000 students, majority of which have the goal of socializing and playing sports. </p>
+              
+              <p id="AboutUs_MissionStatement"> <strong> EasyRent's Mission Statement  </strong> is to connect University of Toronto's community and enhance a student's experience while university.
+              </p>
+
+          </div>
+          <div id="AboutUs_img"><img src="{{url_for('static', filename='images/about_us.jpg')}}"></div>
+      </section>
+    
+      <section id="UpcomingEvents">
+    
+    
+     <section id="FAQ">
+         <div id="FAQ_Content">
+             
+             <h3> FAQ  </h3>
+             
+             
+                 <ul id="FAQ_QAs">
+                   
+                   <li>
+                       <p class="FAQ_Q"> Q: How should we be sure that the person will show up to the sport event? </p>
+                       <p class="FAQ_A"> A: After the event, users are rated by other users, who confirmed that they will be attending that event, and comments can be left under the user's profile. Users can deem other users to be credible by looking at their rating and the comments.  </p>
+                   </li>
+                   
+                   <li>
+                       <p class="FAQ_Q"> Q: Is this only for University of Toronto St. George Campus? </p>
+                       <p class="FAQ_A"> A: TSports is for UTSG, UTM, and UTSC. We are hoping to expand to other Canadian universities.  </p>
+                   </li>
+                   
+                   
+                   <li>
+                       <p class="FAQ_Q"> Q: What if we want to limit our sporting event to professional students only? </p>
+                       <p class="FAQ_A"> A: The user who created the sporting event has two options. They can either include that in the event description and set the requirements for that event to only allow top-rated students in a sport to join. They can also remove users from attending an event after analyzing their profile and deciding whether he/she is good at the sport or not.  </p>
+                   </li>
+                   
+                   
+                 </ul>
+            
+         </div>
+     </section>
+    
+    
+      <footer>
+          
+        <div id="Footer_Content">
+            <ul id="AboutUs_SocialNetwork">
+                  <li> <a href="http://www.facebook.com"> <img id="fb_img" src="{{url_for('static', filename='images/facebook1.png')}}" /> </a> </li>
+                  <li> <a href="http://www.twitter.com"> <img id="twitter_img" src="{{url_for('static', filename='images/twitter.png')}}" /> </a> </li>
+                  <li> <a href="http://www.instagram.com"> <img id="ins_img"src="{{url_for('static', filename='images/instagram.png')}}" /> </a> </li>
+            </ul>
+            <ul>
+                <li> Help </li>
+                <li> Feedback </li>
+                <li> <a href="./copyright.html"> Copyright</a> </li>
+                <li> Careers </li>
+                <li> Contact Us </li>
+            </ul>
+        </div>
+        
+        <div id="Copyright">
+            <p id="Copyright_Logo"> ©2017 EasyRent. All Rights Reserved. </p>
+        </div>
+        
+     </footer>
+
+
+    </body>
+
+</html>
+
+
