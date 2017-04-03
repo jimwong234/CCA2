@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Page</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static',filename='css/registration.css') }}>
+    <!-- Google Rokkitt Font-->
+    <link href="http://fonts.googleapis.com/css?family=Rokkitt" rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <header id="header"> 
+          <div id="SiteLogo">
+          <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="EasyRentLogo" /> </a>
+          </div>
+ 
+          <nav id="Site_Nav">
+              <div id="Home_Buttons">
+                  <ul>
+                      <li id="Register_Button"> <a href={{url_for('registration')}}> Register </a> </li>  <!--Change this to the correct link-->
+                      <li id="Login_Button"> <a href={{url_for('login')}}> Login </a> </li>  <!--Change this to the correct link-->
+                  </ul>
+              </div>      
+          </nav>
+    </header>
+
+    <main>
+        <!--Cancels form if invalid-->
+      <form action={{url_for('registration_submit')}} method="POST" id="UserRegistration">
+
+        <section id="username">
+          <p>User Name</p>
+          <input type="text" name="username" placeholder="User Name" pattern="[a-zA-Z]+" title="Letters Only" required>
+        </section>
+
+        <section id="age">
+          <p>Age</p>
+          <input type="number" name="age" placeholder="Age">
+        </section>
+
+        <section id="gender">
+          <p>Gender</p>
+          <div class="dropdown">
+            <select required name="gender" class="dropdown-select">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </section>
+
+        <section id="email">
+          <p>Email</p>
+          <input type="email" name="email" placeholder="Email" 
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+        </section>
+        
+        <section id="phone">
+          <p>Phone</p>
+          <input type="text" name="phone" placeholder="Phone"
+          pattern="\d{10}|(\(\d{3}\))?(\d{3})?-?\d{3}-\d{4}|\(\d{3}\)\d{7}" required>
+        </section>
+
+        <section id="occupation">
+          <p>Occupation</p>
+          <input type="text" name="occupation" placeholder="Student">
+        </section>
+
+        <section id="password">
+          <p>Password</p>
+          <input type="password" name="password" placeholder="Password"
+          pattern=".{6,}" title="Minimum 6 characters required" required>
+          </input>
+        </section>
+
+        <section id="cfpassword">
+          <p>Confirm Password</p>
+          <input type="password" name="cfpassword" placeholder="Confirm Password"
+          pattern=".{6,}" title="Minimum 6 characters required" required>
+          </input>
+        </section>
+
+        <section id="aboutme">
+          <p>About Me</p>
+          <textarea id="aboutme_text" cols="39" row="50" name="about"></textarea>
+        </section>
+
+        <section id="locations">
+          <p>Locations</p>
+          <div id="ck-collection">
+
+          <div class="ck-button">
+            <input type="checkbox" id="downtown" name="downtown" value="1">
+            <label for="downtown">
+            Downtown
+            </label>
+          </div>
+
+          <div class="ck-button">
+            <input type="checkbox" id="northyork" name="northyork" value="2">
+            <label for="northyork">
+            North York
+            </label>
+          </div>
+
+          <div class="ck-button">
+            <input type="checkbox" id="markham" name="markham" value="3">
+            <label for="markham">
+            Markham
+            </label>
+          </div>
+
+          <div class="ck-button">
+            <input type="checkbox" id="scarborough" name="scarborough" value="4">
+            <label for="scarborough">
+            Scarborough
+            </label>
+          </div>
+
+          <div class="ck-button">
+            <input type="checkbox" id="mississauga" name="mississauga" value="5">
+            <label for="mississauga">
+            Mississauga
+            </label>
+          </div>
+
+          <div class="ck-button">
+            <input type="checkbox" id="others" name="others" value="6">
+            <label for="others">
+            Others
+            </label>
+          </div>
+
+          </div>
+        </section>
+
+        <input type="submit" id="input_submit" value="Submit"/>
+
+      </form>
+      <div id="error_mes">{{ error }}</div>
+    </main>
+
+</body>
+</html>

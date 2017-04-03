@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login.css')}}">
+    <!-- Google Rokkitt Font-->
+	<link href="https://fonts.googleapis.com/css?family=Rokkitt" rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<header id="header"> 
+          <div id="SiteLogo">
+          <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="EasyRentLogo" /> </a>
+          </div>
+ 
+          <nav id="Site_Nav">
+              <div id="Home_Buttons">
+                  <ul>
+                      <li id="Register_Button"> <a href={{url_for('registration')}}> Register </a> </li>  <!--Change this to the correct link-->
+                      <li id="Login_Button"> <a href={{url_for('login')}}> Login </a> </li>  <!--Change this to the correct link-->
+                  </ul>
+              </div>      
+          </nav>
+    </header>
+
+	<main>
+		<section class="login_form">
+			<h1>User Login</h1>
+			<form autocomplete="off" id="AdminLoginForm" method="post" action="/login/check">
+		            <input type="text" class="input_admin" name="account" placeholder="Account" required />
+		            <!--<span class="form_hint">Enter a valid email</span> -->
+		            <input type="password" pattern=".{6,}" required title="Minimum 6 characters required"class="input_password" name="password" placeholder="Password" required/>
+		            <input type="submit" class="input_submit" value="Login"/>
+		    </form>
+		</section>
+		
+	</main>
+    <div id="error_mes"></div>
+</body>
+</html>

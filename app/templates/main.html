@@ -12,7 +12,7 @@
     <body>
        <header id="header">
           <div id="SiteLogo">
-          <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="TSportsLogo" /> </a>
+          <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="EasyRentLogo" /> </a>
           </div>
          <nav id="Site_Nav">
              <div id="Main_Nav" class="main_navs">
@@ -26,8 +26,8 @@
              <!--Jim's responsive design end here-->
              <div id="Home_Buttons" class="home_btns">
                  <ul>
-                     <li id="Register_Button"> <a href="./registration.html"> Register </a> </li>  <!--Change this to the correct link-->
-                     <li id="Login_Button"> <a href="./login.html"> Login </a> </li>  <!--Change this to the correct link-->
+                     <li id="Register_Button"> <a href={{url_for('registration')}}> Register </a> </li>  <!--Change this to the correct link-->
+                     <li id="Login_Button"> <a href={{url_for('login')}}> Login </a> </li>  <!--Change this to the correct link-->
                  </ul>
              </div>
          </nav>
@@ -40,7 +40,7 @@
                    <div class="Banner-Text">
                        <h2 class="Banner-Text-Header">  Find a rental room today.  </h2>
                        <p class="Banner-Text-Content"> A free website for you to rent your rooms or find a rental. </p>
-                       <a href="./registration.html" class="SignUpLink"> Sign up! </a>  <!--Change this to the correct link, to the register page-->
+                       <a href={{url_for('registration')}} class="SignUpLink"> Sign up! </a>  <!--Change this to the correct link, to the register page-->
                    </div>
                </div>
            </div>
