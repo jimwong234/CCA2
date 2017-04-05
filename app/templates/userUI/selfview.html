@@ -25,17 +25,17 @@
 
     <body>
 
-        <!--The notification sound for friend requests, messages, and notifications-->
+         <!--The notification sound for friend requests, messages, and notifications-->
         <audio id="NotificationSound"><source src="./assets/sounds/notification.mp3" type="audio/mpeg" /></audio>
 
-        <!--The top header-->
-       <header id="header">
+         <!--The top header-->
+        <header id="header">
 
-          <div id="SiteLogo">
+           <div id="SiteLogo">
               <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="EasyRentLogo" /> </a>
-          </div>
+           </div>
 
-          <nav id="Site_Nav">
+           <nav id="Site_Nav">
               <ul id="Main_Nav">
                   <div id="RightNav">
                       <li id="FB_Friend_SVG"> <img src={{ url_for('static',filename="images/FB_Friend_Notification.svg") }} alt="FB_Friend_Notification" width="25px" />
@@ -47,9 +47,9 @@
                       <li id="SignOut_Button"> Sign Out </li>
                   </div>
               </ul>
-          </nav>
+           </nav>
 
-       </header>
+        </header>
 
         <section id="ProfileHeader">
             <form action={{ url_for('profile_img_update') }} method="post" enctype="multipart/form-data" id="UploadProfilePic">
@@ -65,6 +65,7 @@
                 <ul>
                     <li id="UserAbout"> About  </li>
                     <li id="UserFriends"> Friends </li>
+                    <li id="MyPosts"> My Posts</li>
                     <li id="SearchEvent">
                         <img src={{ url_for('static',filename="images/searchMagnifier.svg") }} alt="searchMagnifier" width="15px"/>
                         <p class="Profile_Tooltip"> Search Rooms </p>
@@ -75,6 +76,72 @@
                     </li>
                 </ul>
             </nav>
+        </section>
+
+        <section id="ResultShowBoard">
+
+            <section id="about">
+
+            </section>
+
+            <section id="friends">
+
+            </section>
+
+            <section id="my_posts">
+
+            </section>
+
+            <section id="search_post">
+
+            </section>
+
+            <section id="post_rooms">
+                <h1>New Post</h1>
+                <form id="new_post" action="{{ url_for('registration') }}" method="post">
+
+                    <span class="text" id="location_text">Location:</span>
+                    <div class="select" id="location_id">
+                        <span class="arr"></span>
+                        <select name="location" >
+                            <option value="downtown">DownTown</option>
+                            <option value="northyork">NorthYork</option>
+                            <option value="markham">Markham</option>
+                            <option value="scarborough">Scarborough</option>
+                            <option value="mississauga">Mississauga</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </div>
+
+                    <span class="text" id="roomtype_text">Room Type:</span>
+                    <div class="select" id="roomtype_id">
+                        <span class="arr"></span>
+                        <select name="room_type" >
+                            <option value="townhouse">TownHouse</option>
+                            <option value="detachedhouse">DetachedHouse</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="condo">Condo</option>
+                        </select>
+                    </div>
+
+                    <span class="text" id="address_text">Address:</span>
+                    <input id="address_id" type="text" name="address">
+
+                    <span class="text" id="price_text">Price (per month):</span>
+                    <input id="price" type="number" name="price">
+                    <span class="text" id="start_date_text">Start Date:</span>
+                    <input id="start_date_id" type="date" name="start_date">
+                    <span class="text" id="rent_months_text">Rent Months:</span>
+                    <input id="rent_months_id" type="number" name="rent_months">
+
+
+                    <span class="text" id="description_text">Description</span>
+                    <textarea id="description_id" cols="39" row="50" name="description" ></textarea>
+
+                    <input id="submit_btn_id" type="submit" value="POST">
+                </form>
+            </section>
+
         </section>
     </body>
 
