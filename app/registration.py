@@ -68,7 +68,8 @@ def registration_submit():
             'occupation':occupation,
             'password':password,
             'about_me':about_me,
-            'location':location
+            'location':location,
+            'profileimg':"null"
         }
     )
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset = "UTF-8">
+            <title> User Self View </title>  <!--Change this to user's name-->
+            <link rel="stylesheet" type="text/css" href={{ url_for('static',filename="css/selfview.css") }}>
+            <link rel="stylesheet" type="text/css" href={{ url_for('static',filename="css/statusbar.css") }}>
+            <script src={{ url_for('static',filename="script/jquery-3.1.1.min.js") }}></script>
+            <script type="text/javascript" src={{ url_for('static',filename="script/selfview.js") }} defer></script>
+
+            <!--Socket.io-->
+            <script src="/socket.io/socket.io.js"></script>
+            <!--DateTimePicker Library-->
+            <link rel="stylesheet" type="text/css" href="./assets/css/jquery.datetimepicker.css"/>
+            <script src="assets/scripts/jquery.datetimepicker.full.js"></script>
+
+            <!--JQuery cookie plugin-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" defer></script>
+            <script type="text/javascript" src="assets/scripts/StatusBar.js" defer></script>
+
+    </head>
+
+
+    <body>
+
+        <!--The notification sound for friend requests, messages, and notifications-->
+        <audio id="NotificationSound"><source src="./assets/sounds/notification.mp3" type="audio/mpeg" /></audio>
+
+        <!--The top header-->
+       <header id="header">
+
+          <div id="SiteLogo">
+              <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="EasyRentLogo" /> </a>
+          </div>
+
+          <nav id="Site_Nav">
+              <ul id="Main_Nav">
+                  <div id="RightNav">
+                      <li id="FB_Friend_SVG"> <img src={{ url_for('static',filename="images/FB_Friend_Notification.svg") }} alt="FB_Friend_Notification" width="25px" />
+                          <p>  </p>
+                      </li>
+                      <li id="FB_Message_SVG"> <img src={{ url_for('static',filename="images/FB_Message_Notification.svg") }} alt="FB_Messaging" width="25px" />
+                         <p>  </p>
+                      </li>
+                      <li id="SignOut_Button"> Sign Out </li>
+                  </div>
+              </ul>
+          </nav>
+
+       </header>
+
+        <section id="ProfileHeader">
+            <form action={{ url_for('profile_img_update') }} method="post" enctype="multipart/form-data" id="UploadProfilePic">
+                <label for="file-input">
+                    <img id="EditProfilePic" src={{ url_for('static',filename="images/edit.svg") }} width="20px" alt="UserProfilePic" />
+                </label>
+                <input id="file-input" type="file" name="fileUploaded"/>
+            </form>
+            <img id="ProfilePic" src={{ profileimg }} alt="UserProfilePic" />
+            <h2 id="Profile_UserName">{{ username }} </h2>
+
+            <nav id="BodyNav">
+                <ul>
+                    <li id="UserAbout"> About  </li>
+                    <li id="UserFriends"> Friends </li>
+                    <li id="SearchEvent">
+                        <img src={{ url_for('static',filename="images/searchMagnifier.svg") }} alt="searchMagnifier" width="15px"/>
+                        <p class="Profile_Tooltip"> Search Rooms </p>
+                    </li>
+                    <li id="AddEvent">
+                        <img src={{ url_for('static',filename="images/addEvent.svg") }} alt="searchMagnifier" width="15px"/>
+                        <p class="Profile_Tooltip"> Post Rooms </p>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </body>
+
+</html>
+
+
