@@ -11,7 +11,6 @@ def registration():
 
 @webapp.route('/registration/submission',methods=['POST'])
 def registration_submit():
-
     table = dynamodb.Table('Users')
     username = request.form.get('username')
     age = int(request.form.get('age'))

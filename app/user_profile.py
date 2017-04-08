@@ -8,32 +8,33 @@ dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 import os
 import shutil
 
-@webapp.route('/self_view',methods=['GET'])
-def self_view():
-    #search db to get user's info based on primary key account(email)
+@webapp.route('/profile',methods=['GET'])
+def profile():
+    username = session['username']
+    profile_img = session['profile_img']
+    email = session['account']
     table = dynamodb.Table('Users')
-    account = session['account']
-
-    response = table.get_item(
-        Key={
-            'email': account
-        },
-        ProjectionExpression="username,profileimg",
+    r = table.query(
+        KeyConditionExpression=Key('email').eq(email)
     )
-
     data = {}
-    if 'Item' in response:
-        item = response['Item']
-        data.update(item)
+    data['email'] = r['Items'][0]['email']
+    data['about_me'] = r['Items'][0]['about_me']
+    data['age'] = r['Items'][0]['age']
+    data['gender'] = r['Items'][0]['gender']
+    data['location'] = r['Items'][0]['location']
+    data['occupation'] = r['Items'][0]['occupation']
+    data['phone'] = r['Items'][0]['phone']
+    data['username'] = r['Items'][0]['username']
 
-    if data['profileimg'] == 'null':
-        profile_img = 'static/images/DefaultProfilePic.jpg'
+    userimg = r['Items'][0]['profileimg']
+    if userimg == 'null':
+        userimg = 'static/images/DefaultProfilePic.jpg'
     else:
-        profile_img = "https://s3.amazonaws.com/mcc123/" + data['profileimg']
-    username = data['username']
+        userimg = "https://s3.amazonaws.com/mcc123/" + userimg
 
-    return render_template("userUI/selfview.html",profileimg=profile_img,username=username)
-
+    data['profileimg'] = userimg
+    return render_template("userUI/profile.html", profileimg=profile_img, username=username,data=data)
 
 @webapp.route('/profile_img_update',methods=['POST'])
 def profile_img_update():
@@ -75,10 +76,3 @@ def profile_img_update():
     os.makedirs("app/temp_imgs")
 
     return redirect(url_for('self_view'))
-
-@webapp.route('/signout',methods=['GET'])
-def signout():
-    session['account'] = ''
-    session['password'] = ''
-    return redirect(url_for('main'))
-

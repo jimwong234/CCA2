@@ -14,6 +14,7 @@ $(document).ready(function(){
                                         id: 'RegistrationApproved'});
 
         //Append it to the header
-        $('header').append($ApprovedTick);
+        $('nav').append($ApprovedTick);
     }
+
 });

@@ -1,171 +1,84 @@
-body{
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
-	background-size: cover;
-}
-/*Clear the default margin and padding for all elements*/
-#header *
-{
-    margin:0px;
-    padding:0px;
-    font-family: "Lato","Helvetica Neue", Arial ,Helvetica, sans-serif;
-}
 
-#header{
-	position: fixed;
-	top:0px; 
-	left:0px;
-    background-color: rgba(0,0,0,0.8);
+
+html{
     position: fixed;
-    width: 100%;
-    height: 55px;
-    z-index: 1000;  /*To prevent images from overlapping the fixed header*/
-    border-bottom: 1px solid #36414c;
 }
-
-/* Background color*/
-body
-{
-    background-color: rgb(250,250,250);
-    height: 100%;
-    width:100%;
-    position: relative;
-}
-
-a
-{
-    text-decoration: none;
-    color: black;
-}
-
-li
-{
-    list-style: none;
+.heading-font {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
 
-#SiteLogo img
-{
-    margin-left: 5px;
-    margin-top: 5px;
-    height: 45px;
-    width: 45px;
+.body-font {
+  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+}
+.alt-font {
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+}
+a {
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  color: #fdcc52;
+}
+a:hover,
+a:focus {
+  color: #fcbd20;
 }
 
 
-#SiteLogo
-{
-    float: left;
+hr {
+  max-width: 100px;
+  margin: 25px auto 0;
+  border-width: 1px;
+  border-color: rgba(34, 34, 34, 0.1);
+}
+hr.light {
+  border-color: white;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
-/*display the nav bar as in-line block*/
-nav div
-{
-    display: inline-block;
-    margin-left: 30px;
-    margin-right: 30px;
-    font-size: 14px;
+.navbar-default {
+  background-color: white;
+  border-color: rgba(34, 34, 34, 0.05);
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
-#Main_Nav
-{
-    margin-top: 0px;
-}
-
-#Main_Nav ul li
-{
-    float: left;
-}
-
-#Main_Nav ul a
-{
-    padding-top:20px;
-    padding-bottom:17px;
-    padding-left: 6px;
-    padding-right: 6px;
-    display: block;
-    border-bottom: 2px solid transparent;  /*When we hover, border appears*/
-    transition: all ease-in-out 0.3s;
-}
-
-/*Make the links bold on hover*/
-#Main_Nav ul a:hover
-{
-    color: #A0F6F6;
-    background: #111111;
-}
-
-#Home_Buttons
-{
-    float: right;
-    margin-right: 30px;
-    margin-top: 12px;
-}
-
-#Home_Buttons ul li
-{
-    display: inline-block;
-    margin: 0px 10px;  /*Space the buttons out*/
-}
-
-
-/*When hovering on the register or login button, turn it red*/
-#Register_Button a
-{
-    padding-top:18px;
-    padding-bottom:19px;
-    padding-left: 6px;
-    padding-right: 6px;
-    transition: all ease-in-out 0.3s;
-}
-
-/*Add a border to the login button*/
-#Login_Button
-{
-    border: 2px solid #5289B0;
-    border-radius: 20px;
-    padding: 5px 10px;
-}
-
-
-/*Make the links bold on hover*/
-#Login_Button a:hover
-{
-   color: #A0F6F6;
-}
-
-/*Make the links bold on hover*/
-#Register_Button a:hover
-{
-   color: #A0F6F6;
-   background-color: #111111;
-}
-
-#Admin_Button a
-{
-    padding-top:18px;
-    padding-bottom:19px;
-    padding-left: 6px;
-    padding-right: 6px;
-    transition: all ease-in-out 0.3s;
-}
-
-#Admin_Button a:hover
-{
-   color: #A0F6F6;
-   background-color: #111111;
-}
-
-/*Make the color of the nav bar menu items nice green color*/
-#Main_Nav a
-{
-    color: #5289B0;
-}
-
-#Home_Buttons a
-{
-    color: #5289B0;
+.navbar-default .navbar-header .navbar-brand {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  color: #fdcc52;
 }
 
 main{
@@ -174,15 +87,11 @@ main{
 	padding-top: 35px;
 	margin: auto;
 	margin-top: 17%;
-	width:250px;
-	height:160px;
+	width:350px;
+	height:270px;
 	position: relative;
 	border-radius: 12px;
     border: 1px solid rgb(225,225, 225);
-}
-
-main{
-	font-family: 'Rokkitt';
 }
 
 section h1{
@@ -215,7 +124,7 @@ form{
 	background: url(../images/email-icon.png) no-repeat scroll 7px 7px;
 	background-size: 30px 30px;
 	padding-left: 40px;
-	width: 200px;
+	width: 242px;
 	position: absolute;
 
 }
@@ -224,7 +133,7 @@ form{
 	background: url(../images/password-icon.png) no-repeat scroll 7px 7px;
 	background-size: 30px 30px;
 	padding-left: 40px;
-	width: 200px;
+	width: 242px;
 	position: absolute;
 	top: 50px;
 }
@@ -257,21 +166,23 @@ form{
 {
     position: absolute;
     display: block;
-    top: 90%;
+    top: 75%;
     left: 43%;
     background-color: rgba(255,217,217,0.5);
 }
 
 @media screen and (max-width: 720px)
 {
-	main{
-		background:#fff;
-		padding: 60px;
-		margin: auto;
-		margin-top: 30%;
-		width:250px;
-		height:160px;
-		position: relative;
-		border-radius: 12px;
-	}
+    main{
+        background: rgb(255,255,255);
+        padding: 50px;
+        padding-top: 35px;
+        margin: auto;
+        margin-top: 30%;
+        width:350px;
+        height:270px;
+        position: relative;
+        border-radius: 12px;
+        border: 1px solid rgb(225,225, 225);
+    }
 }

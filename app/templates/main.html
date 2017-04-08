@@ -1,125 +1,176 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="en">    
-    <head>
-        <meta charset = "UTF-8">
-        <title> Easy Rent </title>
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
-        <script type="text/javascript" src="{{url_for('static', filename='script/jquery-3.1.1.min.js')}}" defer></script> <!--New JQuery-->
-        <script type="text/javascript" src="{{url_for('static', filename='script/main.js')}}" defer></script>
-    </head>
+<head>
 
-    <body>
-       <header id="header">
-          <div id="SiteLogo">
-          <a href={{url_for('main')}}> <img src="{{url_for('static', filename='images/logo.png')}}" alt="EasyRentLogo" /> </a>
-          </div>
-         <nav id="Site_Nav">
-             <div id="Main_Nav" class="main_navs">
-                 <ul>
-                     <li> <a href="#AboutUs"> About Us </a> </li>
-                     <li> <a href="#FAQ"> FAQ </a> </li>
-                 </ul>
-             </div>
-             <!--Jim's responsive design start here-->
-             <div id="nav_icon"><a href="javascript:void(0);" onclick="showNavBtn()">☰</a></div>
-             <!--Jim's responsive design end here-->
-             <div id="Home_Buttons" class="home_btns">
-                 <ul>
-                     <li id="Register_Button"> <a href={{url_for('registration')}}> Register </a> </li>  <!--Change this to the correct link-->
-                     <li id="Login_Button"> <a href={{url_for('login',approved='False')}}> Login </a> </li>  <!--Change this to the correct link-->
-                 </ul>
-             </div>
-         </nav>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-       </header>
-            <!--The website banner-->
-           <!--JS script sets a random picture everytime the page is loaded-->
-           <div class="Banner-Wrapper" id="Banner-1">
-               <div class="BannerContent-Wrapper">
-                   <div class="Banner-Text">
-                       <h2 class="Banner-Text-Header">  Find a rental room today.  </h2>
-                       <p class="Banner-Text-Content"> A free website for you to rent your rooms or find a rental. </p>
-                       <a href={{url_for('registration')}} class="SignUpLink"> Sign up! </a>  <!--Change this to the correct link, to the register page-->
-                   </div>
-               </div>
-           </div>
-          
-      <section id="AboutUs">
-          
-          <div id="AboutUs_Content">
-              
-              <h2 id="AboutUs_Header"> About Us </h2>
-              
-              <p id="AboutUs_Text"> <strong> EasyRent </strong> is University of Toronto's largest sports social network to meet others. TSports makes it easy for anyone to organize a team or find thousands of other individuals willing to show up and play sports. UofT is home to more than 30,000 students, majority of which have the goal of socializing and playing sports. </p>
-              
-              <p id="AboutUs_MissionStatement"> <strong> EasyRent's Mission Statement  </strong> is to connect University of Toronto's community and enhance a student's experience while university.
-              </p>
+    <title>Easy House Rental</title>
 
-          </div>
-          <div id="AboutUs_img"><img src="{{url_for('static', filename='images/about_us.jpg')}}"></div>
-      </section>
-    
-      <section id="UpcomingEvents">
-    
-    
-     <section id="FAQ">
-         <div id="FAQ_Content">
-             
-             <h3> FAQ  </h3>
-             
-             
-                 <ul id="FAQ_QAs">
-                   
-                   <li>
-                       <p class="FAQ_Q"> Q: How should we be sure that the person will show up to the sport event? </p>
-                       <p class="FAQ_A"> A: After the event, users are rated by other users, who confirmed that they will be attending that event, and comments can be left under the user's profile. Users can deem other users to be credible by looking at their rating and the comments.  </p>
-                   </li>
-                   
-                   <li>
-                       <p class="FAQ_Q"> Q: Is this only for University of Toronto St. George Campus? </p>
-                       <p class="FAQ_A"> A: TSports is for UTSG, UTM, and UTSC. We are hoping to expand to other Canadian universities.  </p>
-                   </li>
-                   
-                   
-                   <li>
-                       <p class="FAQ_Q"> Q: What if we want to limit our sporting event to professional students only? </p>
-                       <p class="FAQ_A"> A: The user who created the sporting event has two options. They can either include that in the event description and set the requirements for that event to only allow top-rated students in a sport to join. They can also remove users from attending an event after analyzing their profile and deciding whether he/she is good at the sport or not.  </p>
-                   </li>
-                   
-                   
-                 </ul>
-            
-         </div>
-     </section>
-    
-    
-      <footer>
-          
-        <div id="Footer_Content">
-            <ul id="AboutUs_SocialNetwork">
-                  <li> <a href="http://www.facebook.com"> <img id="fb_img" src="{{url_for('static', filename='images/facebook1.png')}}" /> </a> </li>
-                  <li> <a href="http://www.twitter.com"> <img id="twitter_img" src="{{url_for('static', filename='images/twitter.png')}}" /> </a> </li>
-                  <li> <a href="http://www.instagram.com"> <img id="ins_img"src="{{url_for('static', filename='images/instagram.png')}}" /> </a> </li>
-            </ul>
-            <ul>
-                <li> Help </li>
-                <li> Feedback </li>
-                <li> <a href="./copyright.html"> Copyright</a> </li>
-                <li> Careers </li>
-                <li> Contact Us </li>
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+
+    <!-- Theme CSS -->
+    <link href={{ url_for('static',filename='css/main.css') }} rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Easy House Rental</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href={{ url_for('registration') }}>Register</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href={{ url_for('login') }}>Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>Find a rental room today! Easy House Rental is a free website for you to rent your house or find a rental.</h1>
+                            <a href={{ url_for('registration') }} class="btn btn-outline btn-xl page-scroll">Sign Up!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="download" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Mobile versions will be available soon!</h2>
+                    <p>We are currently working on Android and IOS versions, please wait for the release of mobile versions!</p>
+                    <div class="badges">
+                        <a class="badge-link" href="#"><img src={{ url_for('static',filename="images/google-play-badge.svg") }} alt=""></a>
+                        <a class="badge-link" href="#"><img src={{ url_for('static',filename="images/app-store-badge.svg") }} alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Unlimited Features, Totally Free!</h2>
+                        <p class="text-muted">Check out what you can do with this  website!</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-present text-primary"></i>
+                                    <h3>Free to Use</h3>
+                                    <p class="text-muted">All features including post rooms, search rooms, add friends are totally free!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="glyphicon glyphicon-user text-primary"></i>
+                                    <h3>Online Chat</h3>
+                                    <p class="text-muted">Online chat system is available for tenants and landlords to communicate!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact bg-primary">
+        <div class="container">
+            <h2>Share <i class="fa fa-heart"></i> with  your friends!</h2>
+            <ul class="list-inline list-social">
+                <li class="social-twitter">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="social-facebook">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="social-google-plus">
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
             </ul>
         </div>
-        
-        <div id="Copyright">
-            <p id="Copyright_Logo"> ©2017 EasyRent. All Rights Reserved. </p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2017 Easy House Rental. All Rights Reserved.</p>
+            <ul class="list-inline">
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Terms</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>
         </div>
-        
-     </footer>
+    </footer>
 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    </body>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src={{ url_for('static',filename="script/new-age.min.js") }}></script>
+
+</body>
 
 </html>
-
-

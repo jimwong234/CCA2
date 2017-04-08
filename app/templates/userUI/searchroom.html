@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User Dashboard</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href={{ url_for('static',filename="css/searchroom.css") }} rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href={{ url_for("dashboard") }}>DashBoard</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="ProfilePic" src = {{ profileimg }} alt="UserProfilePic"/> {{ username }} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href={{ url_for('signout') }}><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href={{ url_for("profile") }}><i class="glyphicon glyphicon-user"></i> Profile</a>
+                    </li>
+                    <li>
+                        <a href="charts.html"><i class="glyphicon glyphicon-heart"></i> Friends</a>
+                    </li>
+                    <li>
+                        <a href={{ url_for("myposts") }}><i class="fa fa-fw fa-table"></i> My Posts</a>
+                    </li>
+                    <li class="active">
+                        <a href={{ url_for("searchroom") }}><i class="glyphicon glyphicon-search"></i> Search Room</a>
+                    </li>
+                    <li>
+                        <a href= {{ url_for("postroom") }}><i class="fa fa-fw fa-edit"></i> Post Room</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="glyphicon glyphicon-edit"></i> Online Chat</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="glyphicon glyphicon-cog"></i> Setting</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper" >
+
+            <div class="container-fluid">
+                <div class="well">
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Search a Room
+                            </h1>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+
+                    <div class="row" >
+                        <div class="col-lg-6">
+                            <form role="form" action="{{ url_for('search') }}" method="post">
+                                <div class="form-group">
+                                    <label>Minimum Price:</label>
+                                    <input class="form-control" type="number" name="min_price" >
+                                    <p class="help-block">Enter a price (CAD per month)</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Maximum Price:</label>
+                                    <input class="form-control" type="number" name="max_price" >
+                                    <p class="help-block">Enter a price (CAD per month)</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Tenancy:</label>
+                                    <input class="form-control" type="number" name="rent_months">
+                                    <p class="help-block">Enter a minimum number of months of rental</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Start Date From:</label>
+                                    <input class="form-control" type="date" name="start_date_from" required>
+                                    <p class="help-block">Enter an earliest start date of rental</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Start Date To:</label>
+                                    <input class="form-control" type="date" name="start_date_to" required>
+                                    <p class="help-block">Enter a latest start date of rental</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Location:</label>
+                                    <select name="location" >
+                                        <option value="downtown">DownTown</option>
+                                        <option value="northyork">NorthYork</option>
+                                        <option value="markham">Markham</option>
+                                        <option value="scarborough">Scarborough</option>
+                                        <option value="mississauga">Mississauga</option>
+                                        <option value="others">Others</option>
+                                    </select>
+
+                                    <label>Room Type:</label>
+                                    <select name="room_type" >
+                                        <option value="townhouse">TownHouse</option>
+                                        <option value="detachedhouse">DetachedHouse</option>
+                                        <option value="apartment">Apartment</option>
+                                        <option value="condo">Condo</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-lg btn-primary">Search</button>
+                                    <button type="reset" class="btn btn-lg btn-danger">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.well-->
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
