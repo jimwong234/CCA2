@@ -2,11 +2,9 @@ from flask import render_template,session,request,redirect,url_for
 from app import webapp
 
 import boto3
-from boto3.dynamodb.conditions import Key, Attr
+from boto3.dynamodb.conditions import Key
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-import os
-import shutil
 
 @webapp.route('/profile',methods=['GET'])
 def profile():
@@ -56,23 +54,16 @@ def profile_img_update():
         ExpressionAttributeValues={
             ':p': img_padding_name
         }
-
     )
     #store img (img name after padding) to s3
-    #store to local first
-    fname = os.path.join('app/temp_imgs', img_padding_name)
-    img.save(fname)
     #upload to s3
     s3 = boto3.client('s3')
-    s3.upload_file(fname, "mcc123", img_padding_name)
+    s3.upload_fileobj(img, "mcc123", img_padding_name)
     # change the image to be public-read
     s3 = boto3.resource('s3')
     bucket = s3.Bucket("mcc123")
     object = s3.Object("mcc123", img_padding_name)
     object.Acl().put(ACL="public-read")
     bucket.Acl().put(ACL="public-read")
-    # delete local files
-    shutil.rmtree('app/temp_imgs')
-    os.makedirs("app/temp_imgs")
 
     return redirect(url_for('self_view'))

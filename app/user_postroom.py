@@ -4,7 +4,7 @@ from app import webapp
 import boto3
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-import os
+import os,stat
 import datetime
 import shutil
 
@@ -38,17 +38,11 @@ def new_post():
         fn = f.filename
         s3_image_name = email + '__' + fn
         db_image_name = db_image_name + s3_image_name + ','
-        fname = os.path.join('app/temp_imgs', s3_image_name)
-        f.save(fname)
-        s3_client.upload_file(fname, "mcc123", s3_image_name)
+        s3_client.upload_fileobj(f, "mcc123", s3_image_name)
         bucket = s3_resource.Bucket("mcc123")
         object = s3_resource.Object("mcc123", s3_image_name)
         object.Acl().put(ACL="public-read")
         bucket.Acl().put(ACL="public-read")
-
-    # delete local files
-    shutil.rmtree('app/temp_imgs')
-    os.makedirs("app/temp_imgs")
 
     db_image_name = db_image_name[:-1]
 

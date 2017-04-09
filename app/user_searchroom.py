@@ -69,13 +69,13 @@ def search():
 
     return render_template("userUI/searchroom_results.html",records=records,profileimg=profile_img,username=username)
 
-@webapp.route('/get_issuer_info',methods=['GET'])
+@webapp.route('/get_issuer_info',methods=['POST'])
 def get_issuer_info():
     username = session['username']
     profile_img = session['profile_img']
     email = session['account']
 
-    issuer_email = request.args.get("email")
+    issuer_email = request.form.get("email")
     table = dynamodb.Table('Users')
     r = table.query(
         KeyConditionExpression=Key('email').eq(issuer_email)

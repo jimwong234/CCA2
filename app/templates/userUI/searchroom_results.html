@@ -143,7 +143,10 @@
                                         {% for record in records %}
                                         <tr>
                                             <td>
-                                                <a href="/get_issuer_info?email={{ record["email"] }}" ><img id="UserPic" src = {{ record['userimg'] }} /> {{ record['username'] }} </a>
+                                                <form action={{ url_for('get_issuer_info') }} method="post">
+                                                    <input hidden name="email" value={{ record["email"] }}>
+                                                    <a href="#" onclick="this.parentNode.submit()"><img id="UserPic" src = {{ record['userimg'] }} /> {{ record['username'] }}</a>
+                                                </form>
                                             </td>
                                             <td>
                                                 {{ record['location'] }}
