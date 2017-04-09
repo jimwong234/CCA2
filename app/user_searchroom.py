@@ -14,7 +14,7 @@ def searchroom():
 
 @webapp.route('/search',methods=['POST'])
 def search():
-    username = session['username']
+    selfusername = session['username']
     profile_img = session['profile_img']
 
     usertable = dynamodb.Table('Users')
@@ -67,7 +67,7 @@ def search():
         i['userimg'] = userimg
         records.append(i)
 
-    return render_template("userUI/searchroom_results.html",records=records,profileimg=profile_img,username=username)
+    return render_template("userUI/searchroom_results.html",records=records,profileimg=profile_img,username=selfusername)
 
 @webapp.route('/get_issuer_info',methods=['POST'])
 def get_issuer_info():

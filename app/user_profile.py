@@ -32,38 +32,4 @@ def profile():
         userimg = "https://s3.amazonaws.com/mcc123/" + userimg
 
     data['profileimg'] = userimg
-    return render_template("userUI/profile.html", profileimg=profile_img, username=username,data=data)
-
-@webapp.route('/profile_img_update',methods=['POST'])
-def profile_img_update():
-    #get uploaded img
-    if 'fileUploaded' not in request.files:
-        return "Missing uploaded file"
-    img = request.files['fileUploaded']
-    #pad user name to img name
-    img_name = img.filename
-    account = session['account']
-    img_padding_name = account + '_' + img_name
-    #store img name after padding into corresponding user item
-    table = dynamodb.Table('Users')
-    table.update_item(
-        Key={
-            'email': account,
-        },
-        UpdateExpression="set profileimg = :p",
-        ExpressionAttributeValues={
-            ':p': img_padding_name
-        }
-    )
-    #store img (img name after padding) to s3
-    #upload to s3
-    s3 = boto3.client('s3')
-    s3.upload_fileobj(img, "mcc123", img_padding_name)
-    # change the image to be public-read
-    s3 = boto3.resource('s3')
-    bucket = s3.Bucket("mcc123")
-    object = s3.Object("mcc123", img_padding_name)
-    object.Acl().put(ACL="public-read")
-    bucket.Acl().put(ACL="public-read")
-
-    return redirect(url_for('self_view'))
+    return render_template("userUI/profile.html", profileimg=profile_img, username=username,data=data,flag="profile")

@@ -4,9 +4,7 @@ from app import webapp
 import boto3
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-import os,stat
 import datetime
-import shutil
 
 
 @webapp.route('/postroom',methods=['GET'])

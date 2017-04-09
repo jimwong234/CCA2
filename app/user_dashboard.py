@@ -2,11 +2,8 @@ from flask import render_template,session,request,redirect,url_for
 from app import webapp
 
 import boto3
-from boto3.dynamodb.conditions import Key, Attr
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-import os
-import shutil
 
 @webapp.route('/dashboard',methods=['GET'])
 def dashboard():

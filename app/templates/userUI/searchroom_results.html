@@ -72,7 +72,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="ProfilePic" src = {{ profileimg }} alt="UserProfilePic"/> {{ username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href={{ url_for('profile') }}><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -88,22 +88,22 @@
                         <a href={{ url_for("profile") }}><i class="glyphicon glyphicon-user"></i> Profile</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="glyphicon glyphicon-heart"></i> Friends</a>
+                        <a href={{ url_for("myposts") }}><i class="fa fa-fw fa-table"></i> My Posts</a>
                     </li>
                     <li>
-                        <a href={{ url_for("myposts") }}><i class="fa fa-fw fa-table"></i> My Posts</a>
+                        <a href={{ url_for("postroom") }}><i class="fa fa-fw fa-edit"></i> Post Room</a>
                     </li>
                     <li  class="active">
                         <a href={{ url_for("searchroom") }}><i class="glyphicon glyphicon-search"></i> Search Room</a>
                     </li>
                     <li>
-                        <a href={{ url_for("postroom") }}><i class="fa fa-fw fa-edit"></i> Post Room</a>
+                        <a href="charts.html"><i class="glyphicon glyphicon-heart"></i> Friends</a>
                     </li>
                     <li>
                         <a href="forms.html"><i class="glyphicon glyphicon-edit"></i> Online Chat</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="glyphicon glyphicon-cog"></i> Setting</a>
+                        <a href={{ url_for("setting",errors="no") }}><i class="glyphicon glyphicon-cog"></i> Setting</a>
                     </li>
                 </ul>
             </div>

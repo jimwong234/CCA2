@@ -18,7 +18,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href={{ url_for('static',filename="css/post_details.css") }} rel="stylesheet">
+    <link href={{ url_for('static',filename="css/setting.css") }} rel="stylesheet">
 
 </head>
 
@@ -91,7 +91,7 @@
                         <a href={{ url_for("myposts") }}><i class="fa fa-fw fa-table"></i> My Posts</a>
                     </li>
                     <li>
-                        <a href={{ url_for("postroom") }}><i class="fa fa-fw fa-edit"></i> Post Room</a>
+                        <a href= {{ url_for("postroom") }}><i class="fa fa-fw fa-edit"></i> Post Room</a>
                     </li>
                     <li>
                         <a href={{ url_for("searchroom") }}><i class="glyphicon glyphicon-search"></i> Search Room</a>
@@ -102,7 +102,7 @@
                     <li>
                         <a href="forms.html"><i class="glyphicon glyphicon-edit"></i> Online Chat</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href={{ url_for("setting",errors="no") }}><i class="glyphicon glyphicon-cog"></i> Setting</a>
                     </li>
                 </ul>
@@ -110,7 +110,7 @@
             <!-- /.navbar-collapse -->
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" >
 
             <div class="container-fluid">
                 <div class="well">
@@ -118,69 +118,101 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Post Details
+                                Setting
                             </h1>
                         </div>
                     </div>
+                    <!-- /.row -->
 
-                    <div class="form-group">
-                        <label>Address</label>
-                        <p class="form-control-static">{{ data["address"] }}</p>
-                    </div>
+                    <div class="row" >
+                        <div class="col-lg-6">
+                            <div class="well">
+                                <h3 class="page-header">
+                                    Basic Info
+                                </h3>
+                                <form role="form" action="{{ url_for('change_basic_info') }}" enctype="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <label>Username:</label>
+                                        <input class="form-control" type="text" name="username" required value={{ data['username'] }}>
+                                    </div>
 
-                    <div class="form-group">
-                        <label>Location</label>
-                        <p clasl="form-control-static">{{ data["location"] }}</p>
-                    </div>
+                                    <div class="form-group">
+                                        <label>Age:</label>
+                                        <input class="form-control" type="number" name="age" required value={{ data['age'] }}>
+                                    </div>
 
-                    <div class="form-group">
-                        <label>Roomtype</label>
-                        <p class="form-control-static">{{ data["roomtype"] }}</p>
-                    </div>
+                                    <div class="form-group">
+                                        <label>Phone:</label>
+                                        <input class="form-control" type="text" name="phone" pattern="\d{10}|(\(\d{3}\))?(\d{3})?-?\d{3}-\d{4}|\(\d{3}\)\d{7}" required value={{ data['phone'] }}>
+                                    </div>
 
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <p class="form-control-static">{{ data["start_date"] }}</p>
-                    </div>
+                                    <div class="form-group">
+                                        <label>About me:</label>
+                                        <textarea class="form-control" id="aboutme_text" cols="39" row="50" name="about" placeholder="{{ data['about_me'] }}"></textarea>
+                                    </div>
 
-                    <div class="form-group">
-                        <label>Tenancy</label>
-                        <p class="form-control-static">{{ data["rent_months"] }} Months</p>
-                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-lg btn-primary">CHANGE</button>
+                                        <button type="reset" class="btn btn-lg btn-danger">RESET</button>
+                                    </div>
+                                    {% if errors != "no" %}
+                                        {{ errors }}
+                                    {% endif %}
+                                </form>
+                            </div>
 
-                    <div class="form-group">
-                        <label>Price</label>
-                        <p class="form-control-static">{{ data["price"] }} CAD per Month</p>
-                    </div>
+                            <div class="well">
+                                <h3 class="page-header">
+                                    Change Password
+                                </h3>
+                                <form role="form" action="{{ url_for('change_password') }}" enctype="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <label>Old Password:</label>
+                                        <input class="form-control" type="password" name="old_password" pattern=".{6,}" required title="Minimum 6 characters required">
+                                    </div>
 
-                    <div class="form-group">
-                        <label>Description</label>
-                        <p class="form-control-static">{{ data["description"] }}</p>
-                    </div>
+                                    <div class="form-group">
+                                        <label>New Password:</label>
+                                        <input class="form-control" type="password" name="new_password" pattern=".{6,}" required title="Minimum 6 characters required">
+                                    </div>
 
-                    <div class="form-group">
-                        <label>Room Images</label>
-                        {% for key in data['image'] %}
-                            {% if key != "null" %}
-                                <img class="original_img" src="https://s3.amazonaws.com/mcc123/{{ key }}" height="100" width="100">
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="form-group">
-                        {%  if flag == "myposts" %}
-                        <form action="{{ url_for('myposts') }}" method="get">
-                            <input type="submit" value="BACK" class="btn btn-sm btn-primary">
-                        </form>
-                        {% endif %}
-                        {%  if flag == "searchroom" %}
-                        <form action="{{ url_for('searchroom') }}" method="get">
-                            <input type="submit" value="BACK" class="btn btn-sm btn-primary">
-                        </form>
-                        {% endif %}
-                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm New Password:</label>
+                                        <input class="form-control" type="password" name="cf_new_password" pattern=".{6,}" required title="Minimum 6 characters required">
+                                    </div>
 
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-lg btn-primary">CHANGE</button>
+                                        <button type="reset" class="btn btn-lg btn-danger">RESET</button>
+                                    </div>
+                                    {% if errors != "no" %}
+                                        {{ errors }}
+                                    {% endif %}
+                                </form>
+                            </div>
+
+                            <div class="well">
+                                <h3 class="page-header">
+                                    Change Profile Image
+                                </h3>
+                                <form role="form" action="{{ url_for('change_profileimg') }}" enctype="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <input class="form-control" type="file" name="profileimg" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-lg btn-primary">CHANGE</button>
+                                        <button type="reset" class="btn btn-lg btn-danger">RESET</button>
+                                    </div>
+                                    {% if errors != "no" %}
+                                        {{ errors }}
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
                 </div>
-                <!-- /.well -->
+                <!-- /.well-->
             </div>
             <!-- /.container-fluid -->
 
