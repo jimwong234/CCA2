@@ -88,7 +88,6 @@ def change_password():
 
 @webapp.route('/change_profileimg', methods=['POST'])
 def change_profileimg():
-
     img = request.files['profileimg']
     # pad user name to img name
     img_name = img.filename

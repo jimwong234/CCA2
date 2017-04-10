@@ -94,9 +94,24 @@ def get_issuer_info():
         userimg = 'static/images/DefaultProfilePic.jpg'
     else:
         userimg = "https://s3.amazonaws.com/mcc123/" + userimg
-
     data['profileimg'] = userimg
 
-    flag = "searchroom"
+    #search friends db to see if both are friends
+    table = dynamodb.Table('Friends')
+    response = table.query(
+            KeyConditionExpression=Key('email').eq(email) & Key('friend_email').eq(issuer_email)
+    )
+    print(response)
+    if len(response['Items']) != 0:
+        request_status = response['Items'][0]['adding_status'] #pending or friend
+    else:
+        response = table.query(
+            KeyConditionExpression=Key('email').eq(issuer_email) & Key('friend_email').eq(email)
+        )
+        if len(response['Items']) != 0:
+            request_status = response['Items'][0]['adding_status'] #pending or friend
+        else:
+            request_status = 2 #no pending and not friend
 
-    return render_template("userUI/profile.html", profileimg=profile_img, username=username, data=data,flag=flag,account=email)
+    data['request_status'] = request_status
+    return render_template("userUI/profile.html", profileimg=profile_img, username=username, data=data, account=email)

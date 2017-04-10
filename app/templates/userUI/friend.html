@@ -18,7 +18,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href={{ url_for('static',filename="css/dashboard.css") }} rel="stylesheet">
+    <link href={{ url_for('static',filename="css/friend.css") }} rel="stylesheet">
 
 </head>
 
@@ -96,7 +96,7 @@
                     <li>
                         <a href={{ url_for("searchroom") }}><i class="glyphicon glyphicon-search"></i> Search Room</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href={{ url_for("list_friend_requests") }}><i class="glyphicon glyphicon-heart"></i> Friends</a>
                     </li>
                     <li>
@@ -113,7 +113,82 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
+                <div class="well">
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                My Friend
+                            </h1>
+                        </div>
+                    </div>
+                    <!-- /.row -->
 
+                    <div class="row">
+                        <div class="col-lg-6">
+                            {% for friend in friend_records %}
+                                <form action={{ url_for('get_issuer_info') }} method="post">
+                                    <input hidden name="email" value={{ friend["email"] }}>
+                                    <a href="#" onclick="this.parentNode.submit()"><img id="UserPic" src = {{ friend['image'] }} /> {{ friend['username'] }}</a>
+                                </form>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                <div>
+                <!-- /.well -->
+
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Friend Request
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Accept Request</th>
+                                        <th>Delete Request</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for friend in friend_request_records %}
+                                    <tr>
+                                        <td>
+                                            <form action={{ url_for('get_issuer_info') }} method="post">
+                                                <input hidden name="email" value={{ friend["email"] }}>
+                                                <a href="#" onclick="this.parentNode.submit()"><img id="UserPic" src = {{ friend['image'] }} /> {{ friend['username'] }}</a>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="{{ url_for('confirm_friend_request') }}" method="post">
+                                                <input hidden name="email" value={{ friend["email"] }}>
+                                                <input type="submit" value="ACCEPT" class="btn btn-sm btn-primary">
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="{{ url_for('delete_friend_request') }}" method="post">
+                                                <input hidden name="email" value={{ friend["email"] }}>
+                                                <input type="submit" value="DELETE" class="btn btn-sm btn-danger">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
 
             </div>
             <!-- /.container-fluid -->

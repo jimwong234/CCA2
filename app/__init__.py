@@ -11,3 +11,4 @@ from app import user_myposts
 from app import user_searchroom
 from app import user_profile
 from app import user_setting
+from app import user_friend
