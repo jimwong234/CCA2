@@ -38,7 +38,7 @@ def add_friend():
     if userimg == 'null':
         userimg = 'static/images/DefaultProfilePic.jpg'
     else:
-        userimg = "https://s3.amazonaws.com/mc123/" + userimg
+        userimg = "https://s3.amazonaws.com/mcc123/" + userimg
 
     data['profileimg'] = userimg
     data['request_status'] = 0 #change to request pending
