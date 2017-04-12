@@ -121,42 +121,42 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Address</label>
-                        <p class="form-control-static">{{ data["address"] }}</p>
+                        <label class="title">Address</label>
+                        <p class="content" class="form-control-static">{{ data["address"] }}</p>
                     </div>
 
                     <div class="form-group">
-                        <label>Location</label>
-                        <p clasl="form-control-static">{{ data["location"] }}</p>
+                        <label class="title">Location</label>
+                        <p class="content" class="form-control-static">{{ data["location"] }}</p>
                     </div>
 
                     <div class="form-group">
-                        <label>Roomtype</label>
-                        <p class="form-control-static">{{ data["roomtype"] }}</p>
+                        <label class="title">Roomtype</label>
+                        <p class="content" class="form-control-static">{{ data["roomtype"] }}</p>
                     </div>
 
                     <div class="form-group">
-                        <label>Start Date</label>
-                        <p class="form-control-static">{{ data["start_date"] }}</p>
+                        <label class="title">Start Date</label>
+                        <p class="content" class="form-control-static">{{ data["start_date"] }}</p>
                     </div>
 
                     <div class="form-group">
-                        <label>Tenancy</label>
-                        <p class="form-control-static">{{ data["rent_months"] }} Months</p>
+                        <label class="title">Tenancy</label>
+                        <p class="content" class="form-control-static">{{ data["rent_months"] }} Months</p>
                     </div>
 
                     <div class="form-group">
-                        <label>Price</label>
-                        <p class="form-control-static">{{ data["price"] }} CAD per Month</p>
+                        <label class="title">Price</label>
+                        <p class="content" class="form-control-static">{{ data["price"] }} CAD per Month</p>
                     </div>
 
                     <div class="form-group">
-                        <label>Description</label>
-                        <p class="form-control-static">{{ data["description"] }}</p>
+                        <label class="title">Description</label>
+                        <p class="content" class="form-control-static">{{ data["description"] }}</p>
                     </div>
 
                     <div class="form-group">
-                        <label>Room Images</label>
+                        <label class="title">Room Images</label>
                         {% for key in data['image'] %}
                             {% if key != "null" %}
                                 <img src="https://s3.amazonaws.com/mcc123/{{ key }}" height="100" width="100" data-toggle="modal" data-target="#{{loop.index}}"></img>

@@ -159,3 +159,11 @@ ul.alert-dropdown {
     height: 23px;
     text-align: center;
 }
+
+.title{
+    font-size: 16pt;
+}
+
+.content{
+   font-size: 13pt;
+}
