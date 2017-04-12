@@ -9,9 +9,6 @@ webapp.secret_key = '\x80\xa9s*\x12\xc7x\xa9d\x1f(\x03\xbeHJ:\x9f\xf0!\xb1a\xaa\
 
 @webapp.route('/login',methods=['GET'])
 def login():
-    if 'account' in  session:
-        if session['account'] != "":
-            return redirect(url_for("dashboard"))
     return render_template("login/login.html")
 
 @webapp.route('/login/check',methods=['POST'])
