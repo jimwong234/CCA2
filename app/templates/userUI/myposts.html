@@ -87,7 +87,12 @@
                     <li>
                         <a href={{ url_for("profile") }}><i class="glyphicon glyphicon-user"></i> Profile</a>
                     </li>
+                    {% if flag != "friend_posts" %}
                     <li class="active">
+                    {% endif %}
+                    {% if flag == "friend_posts" %}
+                    <li>
+                    {% endif %}
                         <a href={{ url_for("myposts") }}><i class="fa fa-fw fa-table"></i> My Posts</a>
                     </li>
                     <li>
@@ -98,9 +103,6 @@
                     </li>
                     <li>
                         <a href={{ url_for("list_friend_requests") }}><i class="glyphicon glyphicon-heart"></i> Friends</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="glyphicon glyphicon-edit"></i> Online Chat</a>
                     </li>
                     <li>
                         <a href={{ url_for("setting",errors="no") }}><i class="glyphicon glyphicon-cog"></i> Setting</a>
@@ -118,7 +120,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
+                                {% if flag == "friend_posts" %}
+                                Friend's Posts
+                                {% endif %}
+                                {% if flag != "friend_posts" %}
                                 My Posts
+                                {% endif %}
                             </h1>
                         </div>
                     </div>
@@ -134,7 +141,9 @@
                                             <th>type</th>
                                             <th>address</th>
                                             <th>Details</th>
+                                            {% if flag != "friend_posts" %}
                                             <th>Remove</th>
+                                            {% endif %}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,12 +166,15 @@
                                                     <input type="submit" value="DETAILS" class="btn btn-sm btn-primary">
                                                 </form>
                                             </td>
+                                            {% if flag != "friend_posts" %}
                                             <td>
                                                 <form action="{{ url_for('delete_post') }}" method="post">
                                                     <input hidden name="post_time" value={{ record['post_time'] }}>
+                                                    <input hidden name="post_user_email" value={{ email }}>
                                                     <input type="submit" value="REMOVE" class="btn btn-sm btn-danger">
                                                 </form>
                                             </td>
+                                            {% endif %}
                                         </tr>
                                         {% endfor %}
                                     </tbody>

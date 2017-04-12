@@ -100,9 +100,6 @@
                         <a href={{ url_for("list_friend_requests") }}><i class="glyphicon glyphicon-heart"></i> Friends</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="glyphicon glyphicon-edit"></i> Online Chat</a>
-                    </li>
-                    <li>
                         <a href={{ url_for("setting",errors="no") }}><i class="glyphicon glyphicon-cog"></i> Setting</a>
                     </li>
                 </ul>
@@ -162,7 +159,16 @@
                         <label>Room Images</label>
                         {% for key in data['image'] %}
                             {% if key != "null" %}
-                                <img class="original_img" src="https://s3.amazonaws.com/mcc123/{{ key }}" height="100" width="100">
+                                <img src="https://s3.amazonaws.com/mcc123/{{ key }}" height="100" width="100" data-toggle="modal" data-target="#{{loop.index}}"></img>
+                                <div id="{{loop.index}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <img src="https://s3.amazonaws.com/mcc123/{{ key }}" class="img-responsive">
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -195,6 +201,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 </body>
 

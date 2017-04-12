@@ -56,10 +56,11 @@ def post_details():
 
     return render_template("userUI/post_details.html", profileimg=profile_img, username=username,data=data,flag=flag)
 
+
 @webapp.route('/delete_post',methods=['POST'])
 def delete_post():
     post_time = request.form.get("post_time")
-    email = session['account']
+    email = request.form.get("post_user_email")
 
     table = dynamodb.Table('Posts')
 
@@ -71,3 +72,23 @@ def delete_post():
     )
 
     return redirect(url_for('myposts'))
+
+@webapp.route('/friendposts',methods=['POST'])
+def friendposts():
+    username = session['username']
+    profile_img = session['profile_img']
+    email = request.form.get("email")
+    table = dynamodb.Table('Posts')
+    pe = 'post_time, #loc, roomtype, address'
+    ean = {"#loc": "location"}
+    response = table.scan(
+        ProjectionExpression=pe,
+        ExpressionAttributeNames=ean,
+        FilterExpression=Attr('email').eq(email)
+    )
+    records = []
+    for i in response['Items']:
+        records.append(i)
+    flag = "friend_posts"
+    return render_template("userUI/myposts.html", profileimg=profile_img, username=username, records=records,
+                           email=email,flag=flag)

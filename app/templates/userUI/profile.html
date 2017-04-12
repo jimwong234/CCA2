@@ -105,9 +105,6 @@
                         <a href={{ url_for("list_friend_requests") }}><i class="glyphicon glyphicon-heart"></i> Friends</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="glyphicon glyphicon-edit"></i> Online Chat</a>
-                    </li>
-                    <li>
                         <a href={{ url_for("setting",errors="no") }}><i class="glyphicon glyphicon-cog"></i> Setting</a>
                     </li>
                 </ul>
@@ -170,8 +167,9 @@
                                 </form>
                                 </div>
                                 <div class="form-group">
-                                <form action="{{ url_for('dashboard') }}" method="get">
-                                    <input type="submit" value="Online Chat" class="btn btn-lg btn-primary">
+                                <form action={{ url_for('friendposts') }} method="post">
+                                    <input hidden name="email" value={{ data["email"] }}>
+                                    <input type="submit" value="Friend's Posts" class="btn btn-lg btn-primary">
                                 </form>
                                 </div>
                             {% endif %}
